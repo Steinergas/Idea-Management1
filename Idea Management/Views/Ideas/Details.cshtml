@@ -1,0 +1,73 @@
+﻿
+@model Idea_Management.Models.Ideas
+
+@{ ViewBag.Title = "Details"; }
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ideas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deadline1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deadline1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deadline2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deadline2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<form method="post" action="/comment/create">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" required />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
